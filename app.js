@@ -8,6 +8,7 @@ const hbs = require("hbs");
 const mongoose = require("mongoose");
 const logger = require("morgan");
 const path = require("path");
+var sslRedirect = require("heroku-ssl-redirect");
 
 const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
@@ -32,6 +33,7 @@ const debug = require("debug")(
 );
 
 const app = express();
+app.use(sslRedirect());
 
 // Middleware Setup
 app.use(logger("dev"));
